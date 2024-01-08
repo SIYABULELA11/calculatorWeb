@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CalculatorSiya</title>
+        <style>
+            body{
+                background-color: rgb(29, 27, 27);
+                font-family: arial;
+            }
+            .calculator-button{
+                margin-right: 10px;
+                border-radius: 35px;
+                height:70px;
+                width:70px;
+                font-size: 35px;
+                border: none;
+                cursor: pointer;
+                margin-bottom: 15px;
+                
+            }
+            .grey-button{
+                background-color: gray;
+                color:white;
+            }
+            .green-button{
+                background-color: green;
+                color:white;
+            }
+            .clear-button{
+                font-size: 20px;
+            }
+            .calculation-appear{
+                font-size: 50px;
+                color:white;
+                margin-bottom: 5px;
+                margin-top: 15px;
+            }
+            .top-head{
+                font-size:60px;
+                color:white;
+                margin-top: 15px;
+                color:blueviolet;
+                margin-bottom: 0;
+                position: relative;
+            }
+            .author{
+                position:absolute;
+                top:70px;
+                left:20px;
+                margin-top: 0px;
+                color: rgb(83, 38, 128);
+            }
+            .rate-me{
+                margin-top: 40px;
+                margin-bottom: 0px;
+            }
+            .star{
+                margin-top: 0px;
+                font-size: 30px;
+                cursor:pointer;
+                display:inline;
+                color: grey ;
+            }
+
+            .star-clicked{
+                color:orange;
+            }
+        </style>
+    </head>
+    <body>
+        <p class="top-head">CalculatorFEx</p>
+        <p class="author">By siya</p>
+        <div>
+            <div class="calculation-appear js-A"></div>
+            <div>
+                <button class="calculator-button grey-button"
+                onclick="makecalculation(1);">1</button>
+                <button class="calculator-button grey-button"
+                onclick="makecalculation(2);">2</button>
+                <button class="calculator-button grey-button"
+                onclick="makecalculation(3);">3</button>
+                <button class="calculator-button green-button"
+                onclick="makecalculation(' + ');">+</button>
+            </div>
+            <div>
+                <button class="calculator-button grey-button"
+                onclick="makecalculation(4);">4</button>
+                <button class="calculator-button grey-button"
+                onclick="makecalculation(5);">5</button>
+                <button class="calculator-button grey-button"
+                onclick="makecalculation(6);">6</button>
+                <button class="calculator-button green-button"
+                onclick="makecalculation(' - ');">-</button>
+            </div>
+            <div>
+                <button class="calculator-button grey-button"
+                onclick="makecalculation(7);">7</button>
+                <button class="calculator-button grey-button"
+                onclick="makecalculation(8);">8</button>
+                <button class="calculator-button grey-button"
+                onclick="makecalculation(9);">9</button>
+                <button class="calculator-button green-button"
+                onclick="makecalculation(' * ');">*</button>
+            </div>
+            <div>
+                <button class="calculator-button grey-button"
+                onclick="makecalculation(0);">0</button>
+                <button class="calculator-button grey-button"
+                onclick="makecalculation(' . ');">.</button>
+                <button class="calculator-button grey-button"
+                onclick="calcualtionFinal=eval(calcualtionFinal);
+                displayCalculation();
+                localStorage.setItem('calculation',calcualtionFinal);">=</button>
+                <button class="calculator-button green-button"
+                onclick="makecalculation(' / ');">/</button>
+            </div>
+            <div>
+                <button class="calculator-button grey-button clear-button"
+                onclick="calcualtionFinal=' ';
+                displayCalculation();
+                localStorage.setItem('calculation',calcualtionFinal);">Clear</button>
+            </div>
+            <div class="rate-me">Rate me now!!!</div>
+           <div class="star js-click" onclick="starCheck('.js-click');">★</div>
+           <div class="star js-click-2" onclick="starCheck('.js-click-2');">★</div>
+           <div class="star js-click-3" onclick="starCheck('.js-click-3');">★</div>
+           <div class="star js-click-4" onclick="starCheck('.js-click-4');">★</div>
+           <div class="star js-click-5" onclick="starCheck('.js-click-5');">★</div>
+           <p></p>
+
+        </div>
+        
+        <script>
+            function starCheck(name){
+                const clicka = document.querySelector(name);
+                if(!clicka.classList.contains('star-clicked')){
+                    clicka.classList.add('star-clicked');
+                }
+                else{
+                    clicka.classList.remove('star-clicked');
+                }
+            }
+            let calcualtionFinal = localStorage.getItem('calculation') || ' ';
+            displayCalculation();
+            function  makecalculation(value){
+                calcualtionFinal+=value;
+                displayCalculation();
+                localStorage.setItem('calculation',calcualtionFinal);
+            }
+            function displayCalculation(){
+                document.querySelector('.js-A').innerHTML=calcualtionFinal;
+            }
+        </script>
+    </body>
+</html>
